@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   
-  <rewriteURI uriStartString="http://jats.nlm.nih.gov/extensions/bits/2.0/rng/BITS-book2.rng" rewritePrefix="../2.0/rng/BITS-book2.rng"/>
+  <rewriteURI uriStartString="http://jats.nlm.nih.gov/extensions/bits/2.0/rng/" rewritePrefix="../2.0/rng/"/>
   
   <group prefer="public">
     <public publicId="-//NLM//DTD BITS Book Interchange DTD v2.0 20151225//EN" uri="../2.0/dtd/BITS-book2.dtd"/>

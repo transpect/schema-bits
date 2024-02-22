@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- MODULE:    Book Interchange DTD -->
+<!-- VERSION:   BITS 2.1 -->
+<!-- DATE:      January 2022 -->
+<!---->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!-- PUBLIC DOCUMENT TYPE DEFINITION -->
+<!-- TYPICAL INVOCATION -->
+<!--
+  "-//NLM//DTD BITS Book Interchange DTD v2.1 20220202//EN"
+       Delivered as file "BITS-book2-1.dtd"
+       Available at:
+       http://jats.nlm.nih.gov/extensions/bits/2.1/BITS-book2-1.dtd
+-->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!-- SYSTEM:     Book Interchange Tag Suite -->
+<!---->
+<!-- PURPOSE:    JATS-Based Book Interchange DTD describes an STM -->
+<!-- book, including Book Series information. -->
+<!---->
+<!-- The BITS Book Interchange DTD is a superset -->
+<!--              customization of the ANSI/NISO JATS Z39.96 Journal -->
+<!-- Article Tag Set. It describes STM book and book -->
+<!-- series. It describes both the metadata for a -->
+<!-- book or book-part and the full narrative content -->
+<!-- of the book or book-part. -->
+<!---->
+<!-- This DTD was constructed using the modules in the -->
+<!-- NISO JATS and adding additional modules that are -->
+<!-- part of the Book Interchange Tag Suite (BITS). -->
+<!---->
+<!-- TAG SET SPONSOR -->
+<!-- National Center for Biotechnology -->
+<!-- Information (NCBI) -->
+<!-- National Library of Medicine (NLM) -->
+<!---->
+<!-- CREATED FOR: -->
+<!-- This DTD was created as a superset customization -->
+<!-- of the ANSI/NISO JATS Z39.96-2012 Version 1.0 -->
+<!-- Journal Article Tag Set. -->
+<!---->
+<!-- Digital archives and publishers may use the -->
+<!-- DTD as is for markup of books or book-like -->
+<!-- material for archiving and transferring -->
+<!-- such material between archives or they may create -->
+<!-- a custom XML DTD from the BITS Suite for -->
+<!-- these purposes. -->
+<!---->
+<!-- This DTD is in the public domain. An organization -->
+<!-- that wishes to create its own DTD from the suite -->
+<!-- may do so without permission from NLM. -->
+<!---->
+<!-- The suite has been set up to be extended using a -->
+<!-- new DTD file and new DTD-specific customization -->
+<!-- modules to redefine the many Parameter Entities. -->
+<!-- Do not modify the suite directly or redistribute -->
+<!-- modified versions of the suite. -->
+<!---->
+<!-- In the interest of maintaining consistency and -->
+<!-- clarity for potential users, NLM requests: -->
+<!---->
+<!-- 1. If you create a DTD from the BITS DTD Suite -->
+<!-- and intend to stay compatible with the suite, -->
+<!-- then please include the following statement -->
+<!-- as a comment in all of your DTD modules: -->
+<!-- "Created from, and fully compatible with, -->
+<!-- the Book Interchange Tag Suite (BITS). -->
+<!---->
+<!-- 2. If you alter one or more modules of the suite, -->
+<!-- then please rename your version and all its -->
+<!-- modules to avoid any confusion with the -->
+<!-- original suite. Also, please include the -->
+<!-- following statement as a comment in all your -->
+<!-- DTD modules: -->
+<!-- "Based in part on, but not fully compatible -->
+<!-- with, the Book Interchange Tag Suite -->
+<!-- (BITS)." -->
+<!---->
+<!-- ORIGINAL CREATION DATE: -->
+<!-- April 2012 -->
+<!---->
+<!-- CREATED BY: Mulberry Technologies, Inc. for the National -->
+<!-- National Center for Biotechnology Information -->
+<!-- (NCBI), a center of the US National Library of -->
+<!-- Medicine (NLM). -->
+<!---->
+<!-- The BITS Book Interchange DTD is built from the -->
+<!-- Journal Archiving and Interchange DTD of the -->
+<!-- ANSI/NISO Journal Article Tag Suite (JATS) -->
+<!-- Version 1.1d1 (Z39.96-2015). -->
+<!---->
+<!-- Suggestions for refinements and enhancements to -->
+<!-- this DTD should be sent in email to: -->
+<!-- bits@ncbi.nlm.nih.gov -->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!-- DTD VERSION/CHANGE HISTORY -->
+<!-- ============================================================= -->
+<!--
+  Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
+      =============================================================
+       BITS Version 2.1                (DAL/BTU) v2.1  (2022-02-02)
+       JATS Version 1.3                (DAL/BTU) v1.3  (2021-06-10)
+  
+       JATS is a continuing maintenance NISO Standard, which
+       requires voting by the ANSI and NISO memberships to be changed. 
+       JATS 1.3 was approved in 2020, and BITS has been modified to use
+       this most recent version. BITS requests approved by the BITS
+       Working Group and selected changes from JATS were added to BITS
+       to this BITS version 2.1.
+  
+   15. PROCESSING METADATA - Added <processing-meta> to the model
+       for <book>.
+  
+   14. NON-MONETARY SUPPORT - Inside <book-meta> added new
+       <support-group> to hold both funding and non-monetary 
+       support descriptions. The element <support-group> is 
+       both a peer to <funding-group> (backward compatibility)
+       and contains <funding-group>.
+  
+   13. BOOK METADATA - 
+       - PRIMARY LANGUAGES - Added <content-language>
+       - PUB DATE NOT AVAILABLE - Added as an alternative to <pub-date>
+         inside the book metadata. Helps prevent leaving the <pub-date>
+         blank or omitting the element.
+       - Added <content-version> and <content-version-alternatives>
+         to hold book-level version numbers
+  
+   12. xsi:noNamespaceSchemaLocation added to attribute list of
+       <book>. Most modern processors do not need this, but
+       a user with an older processor requested it, so the BITS
+       Standing Committee acquiesced. Warning: This pseudo-attribute
+       cannot be used with a DOCTYPE declaration.
+  
+   11. DTD VERSION - Changed from a #FIXED attribute to an optional
+       (#IMPLIED) attribute with a value list.
+  
+   10. JATS MODULES VERSION 1.3 - Changed the name of the referenced
+       JATS modules to use the latest "1.3" version, in the filename.
+  
+    9. BITS became version "2.1" ("v2.1 20220202")
+       Current JATS version is "1.3" and "v1.3 20220202"
+  
+      =============================================================
+       BITS Version 2.0                (DAL/BTU) v2.0  (2015-12-25)
+       JATS Version 1.1                (DAL/BTU) v1.1  (2015-12-15)
+  
+       JATS is a continuing maintenance NISO Standard, which
+       requires voting by the ANSI and NISO memberships to be changed. 
+       JATS 1.1 was approved in late 2015, and BITS modified to use
+       the most recent version. No other changes to BITS were made.
+  
+    8. BITS remained version "2.0" but became "v2.0 20151225"
+       JATS became version "1.1" and "v1.1 20151215"
+  
+      =============================================================
+       BITS Version 2.0                (DAL/BTU) v2.0  (2015-03-15)
+       JATS Version 1.1                (DAL/BTU) v1.1  (2015-03-01)
+  
+       BITS was modified, based on user feedback collected in 2014 
+       and January/February 2015, according to the decisions
+       made by the BITS Working Group. This DTD represents current 
+       BITS and an interim version of the non-normative JATS DTD 
+       Suite (version 1.1), as an indication to JATS users of 
+       the decisions that have been made by the JATS Standing
+       Committee. 
+  
+       NISO JATS is a continuing maintenance NISO Standard, which
+       requires voting by the NISO membership to be changed. This
+       Committee Draft 1.1 will be sent to the NISO voting
+       membership, to become (if approved) NISO JATS 1.1.
+  
+    7. ALI NAMESPACE - Added the ali: namespace to the attributes 
+       for <book-part-wrapper>.
+  
+    6. NEW MODULE - Called in the new module bits-common2-1.ent.
+  
+    5. REFERENCES WITHIN FRONT MATTER - Added <ref-list> to the
+       large OR group inside <front-matter>.
+  
+    4. BOOK APPENDIX AND BOOK APPENDIX GROUP - Changed the model
+       of <book-back> to contain <book-app> and <book-app-group>
+       instead of <app> and <app-group>. Regular appendices are
+       now only found in the back matter of book parts (<back>) 
+       rather than in the back matter of books (<book-back>).
+  
+    3. ALI - Added ALI namespace for NISO Access and Indicator 
+       license reference and free to read elements to book-level
+       attributes.
+  
+    2. BITS became version "2.0" and   "v2.0 20150630"
+       JATS became version "1.1" and "v1.1 20150301"
+  
+       =============================================================
+       BITS Version 1.1                (DAL/BTU) v1.1    (2014-09-30)
+       JATS Version 1.1d2              (DAL/BTU) v1.1d2  (2014-09-30)
+  
+       NISO JATS is a continuing maintenance NISO Standard, which
+       requires voting by the NISO membership to be changed. This
+       Committee Draft 1.1d2 will be sent to the NISO voting
+       membership, to become (if approved) NISO JATS 1.1.
+  
+       This catalog represents an interim version of the
+       non-normative JATS DTD Suite, as an indication to JATS users
+       the decisions that have been made by the JATS Standing
+       Committee.
+  
+    1. BITS became version "1.1" and   "v1.1 20140930//EN"
+       JATS became version "1.1d2" and "v1.1d2 20140930//EN"
+  
+       =============================================================
+  
+-->
+<!-- ============================================================= -->
+<!-- DESIGN CONSIDERATIONS -->
+<!-- ============================================================= -->
+<!--
+  MODULAR DTD LIBRARY
+  A set of Book Interchange Tag Suite (BITS)
+  DTD modules was written as the basis for
+  publishing, interchange, and repository
+  book DTDs, with the intention that DTDs for
+  specific purposes, such as this Book
+  DTD, would be developed based on them.
+  
+  This Book Interchange DTD has been developed
+  from the ANSI/NISO JATS Z39.96 DTD modules,
+  in the approved manner, making changes to the
+  declarations in those modules by over-riding
+  Parameter Entity contents. These overrides
+  are defined in the three BITS book
+  customization modules:
+      %bookcustom-classes.ent;
+      %bookcustom-mixes.ent;
+      %bookcustom-models.ent;
+  which are called from this DTD file.
+-->
+<!-- ============================================================= -->
+<!-- MODULES OF MODULES INVOKED -->
+<!-- ============================================================= -->
+<!-- MODULE TO NAME DTD-SPECIFIC MODULES -->
+<!-- Names all DTD-specific external modules -->
+<!-- MODULE TO NAME THE MATHML 3.0 MODULES -->
+<!-- Names all DTD-specific external modules -->
+<!-- MODULE TO NAME THE NISO JATS MODULES -->
+<!--
+  Declares all the external modules that are
+  part of the modular ANSI/NISO JATS Z39.96 DTD
+  library.
+     Since this module declares but does not
+  invoke modules, this DTD then invokes any
+  modules it uses by referencing the external
+  Parameter Entities defined in this JATS
+  Module of Modules.
+-->
+<!-- ============================================================= -->
+<!-- NISO ALI NAMESPACE SETUP -->
+<!-- ============================================================= -->
+<!-- DEFINE ALI NAMESPACE ATTRIBUTE AND PREFIX -->
+<!--
+  Names the module defines the NISO Access and 
+  Indicators Exchange Model namespace, prefix, 
+  and pseudo-attribute @xmlns.
+-->
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  
+  <include href="JATS-ali-namespace1-3.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- SET UP XINCLUDE PROCESSING -->
+  <!-- ============================================================= -->
+  <!-- XINCLUDE MODULE -->
+  <!--
+    Set up the namespace and elements for using
+    <xi:include> to manage books and book parts.
+  -->
+  <include href="BITS-xinclude2-1.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- SET UP COMMON (ALL ELEMENT) ATTRIBUTES -->
+  <!-- ============================================================= -->
+  <!-- JATS COMMON ATTRIBUTES -->
+  <!--
+    Set up the common attributes, those used on
+    nearly all elements.
+    Must be called before the custom models
+    module.
+  -->
+  <include href="JATS-common-atts1-3.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- CUSTOMIZATION MODULES INVOKED -->
+  <!-- Note: These modules must be called after -->
+  <!-- all Module of Modules but before any other -->
+  <!-- modules. Unlike any other grouping, order -->
+  <!-- of these modules matters. -->
+  <!-- ============================================================= -->
+  <!-- DTD-SPECIFIC CLASS CUSTOMIZATIONS MODULE -->
+  <!--
+    Names the module that holds the DTD-specific
+    class definitions for the BITS Book
+    Interchange DTD that over-ride the defaults
+    of either the BITS or the NISO JATS.
+    (Defined in %bookcustom-modules.ent; )
+  -->
+  <include href="BITS-bookcustom-classes2-1.ent.rng"/>
+  <!-- DEFAULT ELEMENT CLASSES MODULE -->
+  <!--
+                        Names the module that holds the standard
+    class definitions for the JATS DTD Library.
+  -->
+  <include href="JATS-default-classes1-3.ent.rng"/>
+  <!-- DTD-SPECIFIC MIX CUSTOMIZATIONS MODULE -->
+  <!--
+    Names the module that holds the DTD-specific
+    mix definitions for the BITS Book
+    Interchange DTD that over-ride the defaults
+    of either the BITS or the NISO JATS.
+    (Defined in %bookcustom-modules.ent; )
+  -->
+  <include href="BITS-bookcustom-mixes2-1.ent.rng"/>
+  <!-- DEFAULT MIX CUSTOMIZATIONS MODULE -->
+  <!--
+    Names the module that holds the standard
+    mix definitions for the JATS DTD Library.
+  -->
+  <include href="JATS-default-mixes1-3.ent.rng"/>
+  <!--
+    DTD-SPECIFIC MODELS/ATTRIBUTES CUSTOMIZATIONS
+    MODULE
+  -->
+  <!--
+    Names the module that holds the DTD-specific
+    overrides of content models, attribute lists,
+    and elements lists for the BITS Book
+    Interchange DTD that over-ride the defaults
+    of either the BITS or the NISO JATS.
+    (Defined in %bookcustom-modules.ent; )
+  -->
+  <include href="BITS-bookcustom-models2-1.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- ANSI/NISO JATS COMMON (SHARED) ELEMENTS -->
+  <!-- ============================================================= -->
+  <!-- BITS COMMON (SHARED) DECLARATIONS -->
+  <!--
+    Declarations for elements, attributes,
+    entities, and Notations that are shared by
+    more than one class module. Note: Must be
+    called before any of the class modules.
+  -->
+  <include href="BITS-common2-1.ent.rng"/>
+  <!-- COMMON (SHARED) DECLARATIONS -->
+  <!--
+    Declarations for elements, attributes,
+    entities, and Notations that are shared by
+    more than one class module. Note: Must be
+    called before any of the class modules.
+  -->
+  <include href="JATS-common1-3.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- ANSI/NISO JATS CLASS ELEMENTS (alpha) -->
+  <!-- ============================================================= -->
+  <!-- ARTICLE METADATA ELEMENTS -->
+  <include href="JATS-articlemeta1-3.ent.rng"/>
+  <!-- BACK MATTER ELEMENTS -->
+  <include href="JATS-backmatter1-3.ent.rng"/>
+  <!-- DISPLAY (GRAPHICAL) ELEMENTS -->
+  <include href="JATS-display1-3.ent.rng"/>
+  <!-- FORMATTING ELEMENT CLASSES -->
+  <!-- Elements that change rendition/display. -->
+  <include href="JATS-format1-3.ent.rng"/>
+  <!-- FUNDING ELEMENTS -->
+  <!--
+    Elements that describe the sponsorship or
+    open access
+  -->
+  <include href="JATS-funding1-3.ent.rng"/>
+  <!-- JOURNAL METADATA ELEMENTS -->
+  <include href="JATS-journalmeta1-3.ent.rng"/>
+  <!-- LINK CLASS ELEMENTS -->
+  <include href="JATS-link1-3.ent.rng"/>
+  <!-- LIST CLASS ELEMENTS -->
+  <include href="JATS-list1-3.ent.rng"/>
+  <!-- MATH ELEMENTS -->
+  <include href="JATS-math1-3.ent.rng"/>
+  <!-- NLM CITATION ELEMENT (deprecated) -->
+  <include href="JATS-nlmcitation1-3.ent.rng"/>
+  <!-- PARAGRAPH-LEVEL ELEMENTS -->
+  <include href="JATS-para1-3.ent.rng"/>
+  <!-- PHRASE-LEVEL ELEMENTS -->
+  <include href="JATS-phrase1-3.ent.rng"/>
+  <!--
+    BIBLIOGRAPHIC REFERENCE (CITATION)
+    CLASS ELEMENTS
+  -->
+  <include href="JATS-references1-3.ent.rng"/>
+  <!-- RELATED OBJECT ELEMENT -->
+  <!--
+    Defines the <related-object> element to
+    describe a related object such as a
+    related book or a dataset.
+  -->
+  <include href="JATS-related-object1-3.ent.rng"/>
+  <!-- SECTION ELEMENTS -->
+  <include href="JATS-section1-3.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- THE REST OF THE EXTERNAL MODULES INVOKED -->
+  <!-- ============================================================= -->
+  <!-- MATHML SETUP MODULE -->
+  <!-- Invoke the MathML modules -->
+  <include href="JATS-mathml3-mathmlsetup1-3.ent.rng"/>
+  <!-- XHTML TABLE SETUP MODULE -->
+  <!--
+    Set up the necessary Parameter Entity values
+    and then invoke XHTML (HTML 4.0) table
+    module
+  -->
+  <include href="JATS-XHTMLtablesetup1-3.ent.rng"/>
+  <!-- SPECIAL CHARACTERS DECLARATIONS -->
+  <!--
+    Standard XML special character entities
+    used in this DTD
+  -->
+  <!-- CUSTOM SPECIAL CHARACTERS DECLARATIONS -->
+  <!--
+    Custom special character entities created
+    specifically for use in this DTD Suite
+  -->
+  <include href="JATS-chars1-3.ent.rng"/>
+  <!-- NOTATION DECLARATIONS MODULE -->
+  <!-- ============================================================= -->
+  <!-- BOOK-SPECIFIC ELEMENT MODULES INVOKED -->
+  <!-- ============================================================= -->
+  <!-- BITS BOOK METADATA ELEMENTS MODULE -->
+  <!--
+    Element declarations for BITS metadata
+    elements for books and book parts.
+  -->
+  <include href="BITS-bookmeta2-1.ent.rng"/>
+  <!-- BITS BOOK COMPONENT (BOOK-PART) ELEMENTS -->
+  <!--
+    Element declarations for <book-part>
+    element.
+  -->
+  <include href="BITS-book-part2-1.ent.rng"/>
+  <!-- BITS TOP-LEVEL BOOK-PART-WRAPPER -->
+  <!--
+    Element declarations for BITS top-level
+    <book-part-wrapper> element.
+  -->
+  <include href="BITS-book-part-wrap2-1.ent.rng"/>
+  <!-- BITS STRUCTURAL INDEX ELEMENTS MODULE -->
+  <!--
+    Element declarations for BITS structural
+    index model (<index>).
+  -->
+  <include href="BITS-index2-1.ent.rng"/>
+  <!-- BITS EMBEDDED INDEX ELEMENTS MODULE -->
+  <!--
+    Element declarations the index elements
+    which are embedded in the document
+    narrative.
+  -->
+  <include href="BITS-embedded-index2-1.ent.rng"/>
+  <!-- BITS QUESTION AND ANSWER MODULE -->
+  <!--
+    Element declarations for BITS questions
+    and answers (not complete tests, but used
+    to put build quizzes and tests.
+  -->
+  <include href="BITS-question-answer2-1.ent.rng"/>
+  <!-- BITS STRUCTURAL TABLE OF CONTENTS MODULE -->
+  <!--
+    Element declarations for BITS navigation
+    and pointing mechanism for structural
+    Indexes and tables of Contents.
+  -->
+  <include href="BITS-toc2-1.ent.rng"/>
+  <!-- BITS STRUCTURAL NAVIGATION MODULE -->
+  <!--
+    Element declarations for BITS navigation
+    and pointing mechanism for structural
+    Indexes and tables of Contents.
+  -->
+  <include href="BITS-toc-index-nav2-1.ent.rng"/>
+  <!-- ============================================================= -->
+  <!-- PARAMETER ENTITIES FOR ATTRIBUTE LISTS -->
+  <!-- ============================================================= -->
+  <!-- BOOK ATTRIBUTES -->
+  <!--
+    Attributes for the top-level element
+    <book>
+  -->
+ 
+  <define name="book-atts">
+    <ref name="jats-common-atts"/>
+    <optional>
+      <attribute name="book-type"/>
+    </optional>
+    <ref name="dtd-version"/>
+    <optional>
+      <attribute name="indexed">
+        <choice>
+          <value>yes</value>
+          <value>no</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xml:lang" a:defaultValue="en">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
+    <ref name="XLINK.xmlns.attrib"/>
+    <ref name="MATHML.xmlns.attrib"/>
+    <ref name="xinclude.xmlns.attrib"/>
+    <ref name="ali.xmlns.attrib"/>
+    <ref name="Schema.xmlns.attrib"/>
+    <optional>
+      <attribute name="xsi:noNamespaceSchemaLocation"/>
+    </optional>
+  </define>
+  <!-- BACK ATTRIBUTES -->
+  <!-- Attributes for the <book-back> element -->
+  <define name="book-back-atts">
+    <ref name="jats-common-atts"/>
+    <optional>
+      <attribute name="specific-use"/>
+    </optional>
+  </define>
+  <!-- BODY ATTRIBUTES -->
+  <!-- Attributes for the <body> element -->
+  <define name="book-body-atts">
+    <ref name="jats-common-atts"/>
+    <optional>
+      <attribute name="specific-use"/>
+    </optional>
+  </define>
+  <!-- BOOK METADATA ATTRIBUTES -->
+  <!-- Attributes for the <book-meta> element -->
+  <define name="book-meta-atts">
+    <ref name="jats-common-atts"/>
+  </define>
+  <!-- FRONT MATTER ATTRIBUTES -->
+  <!-- Attributes for the <front-matter> element -->
+  <define name="front-matter-atts">
+    <ref name="jats-common-atts"/>
+  </define>
+  <!-- ============================================================= -->
+  <!-- BOOK STRUCTURAL ELEMENTS -->
+  <!-- ============================================================= -->
+  <!-- BOOK MODEL -->
+  <!-- Content model for the <book> element -->
+  <define name="book-model">
+    <optional>
+      <ref name="processing-meta"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="collection-meta"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="book-meta"/>
+    </optional>
+    <optional>
+      <ref name="front-matter"/>
+    </optional>
+    <optional>
+      <ref name="book-body"/>
+    </optional>
+    <optional>
+      <ref name="book-back"/>
+    </optional>
+  </define>
+  <!-- BOOK -->
+  <!--
+    Top-level document for this DTD. A "book" as
+    defined in this DTD covers a single work or
+    book component such as a technical monograph,
+    government report, volume of a monographic
+    series, STM reference work, et al.
+    Details at:
+    https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/element/book.html
+  -->
+  <start combine="choice">
+    <a:documentation>
+      The root element is "book".
+    </a:documentation>
+    <ref name="book"/>
+  </start>
+  
+  <define name="book">
+    <element name="book">
+      <ref name="book-attlist"/>
+      <ref name="book-model"/>
+    </element>
+  </define>
+  <define name="book-attlist" combine="interleave">
+    <ref name="book-atts"/>
+  </define>
+  <!-- ============================================================= -->
+  <!-- BOOK METADATA -->
+  <!-- ============================================================= -->
+  <!-- BOOK METADATA MODEL -->
+  <!--
+    Content model for the book metadata
+    element, which contains the metadata
+    elements applicable to the entire book.
+  -->
+  <define name="book-meta-model">
+    <zeroOrMore>
+      <ref name="book-id"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="content-version.class"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="subj-group"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="book-title-group"/>
+    </optional>
+    <zeroOrMore>
+      <choice>
+        <ref name="contrib-group.class"/>
+        <ref name="aff-alternatives.class"/>
+        <ref name="x.class"/>
+      </choice>
+    </zeroOrMore>
+    <optional>
+      <ref name="author-notes"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="content-language"/>
+    </zeroOrMore>
+    <choice>
+      <zeroOrMore>
+        <ref name="pub-date.class"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="pub-date-not-available"/>
+      </optional>
+    </choice>
+    <optional>
+      <ref name="book-volume-number"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="book-volume-id"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="issn"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="issn-l"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="isbn"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="publisher"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="edition"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="supplementary-material"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="pub-history"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="permissions"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="self-uri.class"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="related-article.class"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="abstract.class"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="trans-abstract"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="kwd-group.class"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="funding-group"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="support-group"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="conference"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="counts"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="custom-meta-group"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="front-back.class"/>
+    </zeroOrMore>
+  </define>
+  <!-- BOOK METADATA (whole book) -->
+  <!--
+    Within a <book>, such as a monograph,
+    encyclopedia, or reference volume,
+    etc., the <book-meta> contains the
+    whole-book-level metadata elements such
+    as book title, book identifier such as DOI,
+    series name, edition, ISBN, et al.
+    This element is a direct parallel to the
+    <front> element in ANSI/NISO JATS.
+    Design Note: Everything is optional in this
+    model, in keeping with the design of JATS
+    Green, even an identifier and a title are
+    optional.
+    Details at:
+    https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/element/book-meta.html
+  -->
+  <define name="book-meta">
+    <element name="book-meta">
+      <ref name="book-meta-attlist"/>
+      <ref name="book-meta-model"/>
+    </element>
+  </define>
+  <define name="book-meta-attlist" combine="interleave">
+    <ref name="book-meta-atts"/>
+  </define>
+  <!-- ============================================================= -->
+  <!-- FRONT MATTER ELEMENTS -->
+  <!-- ============================================================= -->
+  <!-- FRONT MATTER MODEL (narrative front) -->
+  <!--
+    Model for the <front-matter> element which
+    holds the narrative and graphical front
+    matter of a book or book-part, such as the
+    foreword or preface (and thus
+    NOT the book metadata).
+  -->
+  <define name="front-matter-model">
+    <oneOrMore>
+      <choice>
+        <ref name="both-front-back.class"/>
+        <ref name="front-only.class"/>
+        <ref name="front-back.class"/>
+        <ref name="ref-list.class"/>
+        <ref name="xinclude.class"/>
+      </choice>
+    </oneOrMore>
+  </define>
+  <!-- FRONT MATTER -->
+  <!--
+    Narrative introductory material such as
+    Preface, Foreword, Dedication,
+    Introduction to the Fifth Edition, etc.
+    Details at:
+    https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/element/front-matter.html
+  -->
+  <define name="front-matter">
+    <element name="front-matter">
+      <ref name="front-matter-attlist"/>
+      <ref name="front-matter-model"/>
+    </element>
+  </define>
+  <define name="front-matter-attlist" combine="interleave">
+    <ref name="front-matter-atts"/>
+  </define>
+  <!-- ============================================================= -->
+  <!-- BODY ELEMENTS -->
+  <!-- ============================================================= -->
+  <!-- BOOK BODY MODEL -->
+  <!--
+    Content model for the Book Body (main textual
+    content) of a monograph or other book.
+  -->
+  <define name="book-body-model">
+    <oneOrMore>
+      <ref name="book-part.class"/>
+    </oneOrMore>
+  </define>
+  <!-- BODY OF THE BOOK -->
+  <!--
+    The main textual portion of the book, the
+    narrative as opposed to the metadata; contains
+    one or more <book-part>s.
+    Details at:
+    https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/element/book-body.html
+  -->
+  <define name="book-body">
+    <element name="book-body">
+      <ref name="book-body-attlist"/>
+      <ref name="book-body-model"/>
+    </element>
+  </define>
+  <define name="book-body-attlist" combine="interleave">
+    <ref name="book-body-atts"/>
+  </define>
+  <!-- ============================================================= -->
+  <!-- BACK MATTER ELEMENTS -->
+  <!-- ============================================================= -->
+  <!-- BOOK BACK MATTER MODEL -->
+  <!--
+    Content model for the Book Back Matter element
+    which contains ancillary material such as
+    reference lists and appendices for a book.
+    Note: as of 0.2 does NOT include <sig-block>.
+  -->
+  <define name="book-back-model">
+    <oneOrMore>
+      <choice>
+        <ref name="book-back-only.class"/>
+        <ref name="book-part.class"/>
+        <ref name="both-front-back.class"/>
+        <ref name="front-back.class"/>
+      </choice>
+    </oneOrMore>
+  </define>
+  <!-- BOOK BACK MATTER -->
+  <!--
+    Ancillary or supporting material not included
+                          as part of the main textual content of a
+                          book, for example appendices and lists of
+                          references.
+                          At first inception, this element differed from
+                          the <back> element in being able to contain
+                          book parts (<book-part>).
+                          Details at:
+    https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/element/book-back.html
+  -->
+  <define name="book-back">
+    <element name="book-back">
+      <ref name="book-back-attlist"/>
+      <ref name="book-back-model"/>
+    </element>
+  </define>
+  <define name="book-back-attlist" combine="interleave">
+    <ref name="book-back-atts"/>
+  </define>
+</grammar>
+<!-- ================== End BITS Book Interchange DTD ============ -->

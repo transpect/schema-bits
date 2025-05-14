@@ -3,9 +3,8 @@
   
   <rewriteURI uriStartString="http://jats.nlm.nih.gov/extensions/bits/2.0/rng/" rewritePrefix="../2.0/rng/"/>
   
-  <group prefer="public">
-    <public publicId="-//NLM//DTD BITS Book Interchange DTD v2.0 20151225//EN" uri="../2.0/dtd/BITS-book2.dtd"/>
-    <system systemId="BITS-book2.dtd" uri="../2.0/dtd/BITS-book2.dtd"/>
-  </group>
+  <nextCatalog catalog="../2.0/dtd/catalog-jats-v1-1-no-base.xml"/>
+  
+  <nextCatalog catalog="../2.1/dtd/catalog-bits-v2-1-no-base.xml"/>
   
 </catalog>
